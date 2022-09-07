@@ -1,0 +1,117 @@
+body {
+  background: #fafafa;
+  color: #333333;
+  margin-top: 5rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: #444444;
+}
+
+
+/*Main content*/
+.content-section {
+  background: #ffffff;
+  padding: 20px 20px;
+  border: 1px solid #dddddd;
+  border-radius: 3px;
+  margin-bottom: 2rem;
+}
+
+.bold-gray {
+  color: #555555;
+  font-weight: bold;
+}
+
+
+/*Navigation bar*/
+.bg-gray {
+  background-color: #555555;
+}
+
+.site-header .navbar-nav .nav-link {
+  color: #cbd5db;
+}
+
+.site-header .navbar-nav .nav-link:hover {
+  color: #ffffff;
+}
+
+.site-header .navbar-nav .nav-link.active {
+  font-weight: 500;
+}
+
+
+/*Buttons*/
+.btn-denver-broncos {
+  color: #ffffff;
+  background-color: #fb4f14;
+  font-weight: bold;
+}
+
+.btn-denver-broncos:hover {
+  background: #FB3A14;
+  color: #ffffff;
+}
+
+.btn-kansas-city-chiefs {
+  color: #ffffff;
+  background-color: #e31837;
+  font-weight: bold;
+}
+
+.btn-kansas-city-chiefs:hover {
+  background: #D40A36;
+  color: #ffffff;
+}
+
+.btn-las-vegas-raiders {
+  color: #ffffff;
+  background-color: #000000;
+  font-weight: bold;
+}
+
+.btn-las-vegas-raiders:hover {
+  background: #333333;
+  color: #ffffff;
+}
+
+.btn-los-angeles-chargers {
+  color: #ffffff;
+  background-color: #0080C6;
+  font-weight: bold;
+}
+
+.btn-los-angeles-chargers:hover {
+  background: #0077C6;
+  color: #ffffff;
+}
+
+
+/*Table headers*/
+.header-text-color {
+  color: #555555;
+}
+
+.table-header {
+  background-color: #d3d3d3;
+  color: #555555;
+}
+
+
+/*Margins*/
+.no-margin {
+  margin: 0;
+}
+
+.small-margin-bottom {
+  margin-bottom: .5rem;
+}
+
+.large-margin-bottom {
+  margin-bottom: 2rem;
+}
+
+.largest-margin-bottom {
+  margin-bottom: 3rem;
+}

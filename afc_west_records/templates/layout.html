@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='main.css') }}">
+
+    {% if title %}
+        <title>{{ title }}</title>
+    {% else %}
+        <title>AFC West Records</title>
+    {% endif %}
+</head>
+<body>
+    <header class="site-header">
+        <nav class="navbar navbar-expand-md navbar-dark bg-gray fixed-top">
+            <div class="container">
+                <a class="navbar-brand mr-4" href="/">AFC West Records</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main role="main" class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="content-section">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img class="img-fluid" src="{{ image }}">
+                        </div>
+                        <div class="col-md-9">
+                            <h1 class="header-text-color">{{ heading }}</h1>
+                            {% block main_content %}{% endblock %}
+                            {% if reg_headers %}
+                                <h5>Records</h5>
+                                <p class="no-margin">Total Regular Season Record: <span class="bold-gray">{{ reg_totals[0] }}–{{ reg_totals[1] }}–{{ reg_totals[2] }}</span></p>
+                                <p class="no-margin">Total Postseason Record: <span class="bold-gray">{{ post_totals[0] }}–{{ post_totals[1] }}</span></p>
+                                <p class="small-margin-bottom">Total Combined Record: <span class="bold-gray">{{ combined_totals[0] }}–{{ combined_totals[1] }}–{{ combined_totals[2] }}</span></p>
+                                <p class="no-margin">AFC West Championships: <span class="bold-gray">{{ afc_west_count }}</span></p>
+                                <p class="no-margin">AFL Western Division Championships: <span class="bold-gray">{{ afl_western_count }}</span></p>
+                                <p class="no-margin">AFC Championships: <span class="bold-gray">{{ afc_count }}</span></p>
+                                <p class="no-margin">AFL Championships: <span class="bold-gray">{{ afl_count }}</span></p>
+                                <p class="no-margin">Super Bowl Championships: <span class="bold-gray">{{ sb_count }}</span></p>
+                                <p class="large-margin-bottom">Super Bowl Record: <span class="bold-gray">{{ sb_totals[0] }}–{{ sb_totals[1] }}</span></p>
+                                <h5>Regular Season</h5>
+                                <table class="table table-striped large-margin-bottom">
+                                    <thead class="table-header">
+                                        <tr>
+                                            {% for header in reg_headers %}
+                                                <th>{{ header }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    {% for row in reg_data %}
+                                        <tr class="table__row">
+                                            {% for cell in row %}
+                                                <td>{{ cell }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                                <h5>Postseason</h5>
+                                <table class="table table-striped large-margin-bottom">
+                                    <thead class="table-header">
+                                        <tr>
+                                            {% for header in post_headers %}
+                                                <th>{{ header }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    {% for row in post_data %}
+                                        <tr>
+                                            {% for cell in row %}
+                                                <td>{{ cell }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                                <h5>Super Bowl</h5>
+                                <table class="table table-striped large-margin-bottom">
+                                    <thead class="table-header">
+                                        <tr>
+                                            {% for header in sb_headers %}
+                                                <th>{{ header }}</th>
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    {% for row in sb_data %}
+                                        <tr class="table__row">
+                                            {% for cell in row %}
+                                                <td>{{ cell }}</td>
+                                            {% endfor %}
+                                        </tr>
+                                    {% endfor %}
+                                </table>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 largest-margin-bottom">
+                <div class="d-grid gap-2">
+                    <h4 class="header-text-color">Team Records</h4>
+                    <a class="btn btn-denver-broncos" href="{{ url_for('denver_broncos') }}">Denver Broncos</a>
+                    <a class="btn btn-kansas-city-chiefs" href="{{ url_for('kansas_city_chiefs') }}">Kansas City Chiefs</a>
+                    <a class="btn btn-las-vegas-raiders" href="{{ url_for('las_vegas_raiders') }}">Las Vegas Raiders</a>
+                    <a class="btn btn-los-angeles-chargers" href="{{ url_for('los_angeles_chargers') }}">Los Angeles Chargers</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- JavaScript: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>
